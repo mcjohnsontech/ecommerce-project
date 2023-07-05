@@ -32,8 +32,8 @@
           <!-- BOX 3 -->
           <div class="header-flex third">
             <div class="cart-bs">
-              <li>
-                <a href="" class="wordMin"
+              <li onclick="showOnPhone()">
+                <span href="" class="wordMin"
                   ><svg
                     width="22"
                     height="20"
@@ -44,8 +44,8 @@
                       fill="#69707D"
                       fill-rule="nonzero"
                     /></svg
-                ></a>
-                <ul>
+                ></span>
+                <!-- <ul>
                   <li class="box-cart">Cart</li>
                   <hr />
                   <div class="cart-details" id="cartDetails">
@@ -75,7 +75,7 @@
                     <button>Checkout</button>
                     <p class="noContent">Your cart is empty</p>
                   </div>
-                </ul>
+                </ul> -->
               </li>
             </div>
             <div class="humanAvater">
@@ -89,6 +89,84 @@
           </div>
         </nav>
       </header>
+
+      <navbar>
+        <section class="navbarMobile">
+          <div class="navbarGrid">
+            <img
+              src="./src/images/icon-menu.svg"
+              alt=""
+              srcset=""
+              id="phoneMenu"
+              onclick="showNav()"
+            />
+            <img src="./src/images/logo.svg" alt="" />
+            <span href="" class="move">
+              <img src="./src/images/icon-cart.svg" onclick="showOnPhone()"  id="changefunc" alt=""/>
+            </span>
+            <div class="humanAvater move">
+              <img
+                src="./src/images/image-avatar.png"
+                alt=""
+                srcset=""
+                width="100%"
+              />
+            </div>
+          </div>
+        </section>
+      </navbar>
+      <div class="whitehalf" id="whitehalf">
+        <div class="whitestart">
+          <div class="close">
+            <img
+              src="./src/images/icon-close.svg"
+              class="closebtn"
+              alt=""
+              onclick="closebtn()"
+            />
+          </div>
+
+          <ul>
+            <li>Collections</li>
+            <li>Men</li>
+            <li>Women</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul id="phonecart" class="donshowonDesk">
+        <li class="box-cart">Cart</li>
+        <hr />
+        <div class="cart-details" id="cartDetails">
+          <div class="cartsFlex">
+            <div class="avi">
+              <img
+                src="./src/images/image-product-1-thumbnail.jpg"
+                alt=""
+                width="100%"
+                height="100%"
+              />
+            </div>
+            <div class="nameAndPrice">
+              <p class="title-text">Fall Limited Edition Sneakers</p>
+              <p class="same-thing">
+                <span id="dollar">$</span><span id="digit"></span> x
+                <span id="NOT"></span>
+                <span class="price-dark">
+                  <span id="dollar">$</span><span id="total"></span>
+                </span>
+              </p>
+            </div>
+            <div class="trashCan" id="trashCan" onclick="trashcan()">
+              <img src="./src/images/icon-delete.svg" alt="" />
+            </div>
+          </div>
+          <button>Checkout</button>
+          <p class="noContent">Your cart is empty</p>
+        </div>
+      </ul>
       <!-- ENDED HEADER SECTION -->
       <!-- HERE WE HAVE THE DROP DOWN TO SEE WHAT IS IN THE CART -->
 
@@ -289,55 +367,67 @@
       }
     </script>
     <script>
+      const image = document.getElementById("image");
+      const one = document.getElementById("one");
+      const two = document.getElementById("two");
+      const three = document.getElementById("three");
+      const four = document.getElementById("four");
+      const group = [one, two, three, four];
 
-        const image = document.getElementById("image");
-        const one = document.getElementById("one");
-        const two = document.getElementById("two");
-        const three = document.getElementById("three");
-        const four = document.getElementById("four");
-        const group = [one, two, three, four];
+      for (let i = 0; i < group.length; i++) {
+        group[i].addEventListener("click", myFunction);
 
-        for (let i = 0; i < group.length; i++) {
-          group[i].addEventListener("click", myFunction);
-
-          function myFunction() {
+        function myFunction() {
           console.log(group[i]);
           image.src = group[i].childNodes[1].src;
-          if(group[i]){
-            group[i].className ="boxClass";
-          }else{
-            group[i].className ="boxPix"
+          if (group[i]) {
+            group[i].className = "boxClass";
+          } else {
+            group[i].className = "boxPix";
           }
 
           console.log(group[i].className);
 
-
           <!--if(image.src = group[i].childNodes[1].src){
-             //group[i].className = 'boxPixactive';
-            //console.log(image);
+          //group[i].className = 'boxPixactive';
+          //console.log(image);
           //};-->
-         }
         }
-        function themImage(onclick) {}
-        const images = document.getElementById("images");
-        const five = document.getElementById("five");
-        const six = document.getElementById("six");
-        const seven = document.getElementById("seven");
-        const eight = document.getElementById("eight");
-        const classes = [five, six, seven, eight];
+      }
+      function themImage(onclick) {}
+      const images = document.getElementById("images");
+      const five = document.getElementById("five");
+      const six = document.getElementById("six");
+      const seven = document.getElementById("seven");
+      const eight = document.getElementById("eight");
+      const classes = [five, six, seven, eight];
 
-        for (let i = 0; i < group.length; i++) {
-          classes[i].addEventListener("click", myOverlay);
+      for (let i = 0; i < group.length; i++) {
+        classes[i].addEventListener("click", myOverlay);
         function myOverlay() {
           console.log("lllloonkjbj");
           console.log(classes[i]);
           images.src = classes[i].childNodes[1].src;
-          if(classes[i]){
-            classes[i].className ="boxClass";
-          }else{
-            classes[i].className ="boxPix"
+          if (classes[i]) {
+            classes[i].className = "boxClass";
+          } else {
+            classes[i].className = "boxPix";
           }
         }
+      }
+
+      var cl = document.getElementById("whitehalf");
+      function showNav() {
+        cl.style.display = "block";
+      }
+      function closebtn() {
+        console.log("hi");
+        cl.style.display = "none";
+      }
+      var pc = document.getElementById("phonecart");
+      var changefunc = document.getElementById("changefunc");
+      function showOnPhone(){
+        pc.classList.toggle('dontshowonDesk');
       }
     </script>
   </body>
